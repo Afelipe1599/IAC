@@ -1,4 +1,4 @@
-# IAC (Infraestructura como Código) con Terraform
+# IAC con Terraform
 
 Este repositorio contiene la infraestructura de AWS gestionada mediante Terraform. Los módulos incluidos permiten desplegar y configurar servicios como Amazon S3, CloudFront, API Gateway, Lambda, Cognito, RDS, ElastiCache, entre otros.
 
@@ -42,29 +42,31 @@ Este repositorio contiene la infraestructura de AWS gestionada mediante Terrafor
    ```
 
 ## Módulos
-###S3 Bucket
+
+### S3 Bucket
+
 Configura y gestiona buckets S3 con versionado, cifrado, y políticas de acceso.
 
-CloudFront
+### CloudFront
 Despliega distribuciones de CloudFront que distribuyen contenido desde S3.
 
-API Gateway y Lambda
+### API Gateway y Lambda
 Configura un API Gateway que invoca funciones Lambda para el backend de la aplicación.
 
-Cognito
+### Cognito
 Gestión de autenticación de usuarios mediante Amazon Cognito.
 
-Aurora
+### Aurora
 Despliega bases de datos Aurora junto con RDS Proxy para mejorar la seguridad y el rendimiento.
 
-ElastiCache
+### ElastiCache
 Configura clusters de ElastiCache para cacheo en memoria.
 
-IAM
+### IAM
 Gestión de roles y políticas IAM necesarias para los diferentes servicios.
 
-VPC
+### VPC
 Configuración de la Virtual Private Cloud (VPC), incluyendo subnets, tablas de rutas y gateways.
 
-Security Group
+### Security Group
 Configura los grupos de seguridad para controlar el tráfico de red.
