@@ -57,7 +57,6 @@ resource "aws_db_proxy" "rds_proxy" {
   require_tls = true
   tags        = var.tags
 }
-
 resource "aws_db_proxy_target" "proxy_target" {
   db_cluster_identifier = aws_rds_cluster.aurora.id
   db_proxy_name         = aws_db_proxy.rds_proxy.name

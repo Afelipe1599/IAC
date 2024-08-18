@@ -66,6 +66,27 @@ output "rds_proxy_role_arn" {
   value = aws_iam_role.rds_proxy_role.arn
 }
 
+resource "aws_iam_role" "lambda_role" {
+  name = "lambda-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+
+output "lambda_role_arn" {
+  value = aws_iam_role.lambda_role.arn
+}
+
 
 
 

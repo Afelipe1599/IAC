@@ -93,6 +93,51 @@ module "secretsmanager" {
   }
 }
 
+module "s3" {
+  source        = "./modules/s3"
+  bucket_name   = "mi-bucket-s3"
+  acl           = "private"
+  tags = {
+    Name = "S3 Bucket"
+  }
+}
+
+
+module "cloudfront" {
+  source                = "./modules/cloudfront"
+  s3_bucket_domain_name = module.s3.bucket_domain_name
+  origin_id             = "s3-origin-id"
+  tags = {
+    Name = "CloudFront Distribution"
+  }
+}
+
+module "api_gateway_lambda" {
+  source = "./modules/api_gateway_lambda"
+
+  lambda_function_name       = "mi-lambda-function"
+  lambda_handler             = "index.handler"
+  lambda_runtime             = "nodejs14.x"
+  lambda_role_arn            = module.iam.lambda_role_arn
+  lambda_s3_filename         = "lambda.zip"
+  lambda_s3_bucket           = "mi-bucket-s3"
+  lambda_s3_key              = "lambda/lambda.zip"
+  lambda_source_code_hash    = filebase64sha256("lambda.zip")
+  lambda_environment_variables = {
+    ENV_VAR_1 = "value1"
+    ENV_VAR_2 = "value2"
+  }
+
+  api_gateway_name           = "mi-api-gateway"
+  api_gateway_description    = "API Gateway para mi Lambda"
+  api_gateway_resource_path  = "mi-recurso"
+
+  tags = {
+    Name = "API Gateway y Lambda"
+  }
+}
+
+
 
 output "vpc_id" {
   value = module.vpc.vpc_id
