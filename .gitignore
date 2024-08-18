@@ -1,0 +1,35 @@
+# Archivos de estado de Terraform
+*.tfstate
+*.tfstate.*
+
+# Bloqueo de archivos de Terraform
+.terraform/
+.terraform.lock.hcl
+
+# Archivos de configuración local que no deben ser compartidos
+*.tfvars
+*.tfvars.json
+terraform.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Planes de Terraform (pueden contener detalles sensibles)
+*.plan
+
+# Logs y archivos de salida
+crash.log
+*.log
+
+# Archivos de credenciales de AWS (si estuvieran en el repo, aunque lo mejor es no incluirlos)
+*.pem
+*.key
+
+# Archivos de credenciales
+.aws/credentials
+aws_credentials
+
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
