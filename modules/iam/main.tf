@@ -87,6 +87,43 @@ output "lambda_role_arn" {
   value = aws_iam_role.lambda_role.arn
 }
 
+resource "aws_iam_role" "terraform_role" {
+  name = "terraform-s3-policy-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "ec2.amazonaws.com" # O el servicio que corresponda
+        }
+      },
+    ]
+  })
+}
+
+resource "aws_iam_role_policy" "terraform_s3_policy" {
+  name = "terraform-s3-policy"
+  role = aws_iam_role.terraform_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutBucketPolicy",
+          "s3:GetBucketPolicy",
+          "s3:DeleteBucketPolicy"
+        ]
+        Resource = "arn:aws:s3:::mi-bucket-s3111418082024"
+      }
+    ]
+  })
+}
+
 
 
 
