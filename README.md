@@ -11,9 +11,12 @@ Este repositorio contiene la infraestructura de AWS gestionada mediante Terrafor
   - **cognito/**: Configuración de Cognito para la autenticación de usuarios.
   - **aurora/**: Configuración de RDS Aurora y RDS Proxy.
   - **elasticache/**: Configuración de ElastiCache para cacheo en memoria.
+  - **eks/**: Configuración de Amazon EKS para orquestación de contenedores.
+  - **nlb/**: Configuración de Network Load Balancer (NLB) para la distribución de tráfico.
   - **iam/**: Configuración de roles IAM.
   - **vpc/**: Configuración de la red VPC.
   - **security_group/**: Configuración de grupos de seguridad.
+  - **secrets_manager/**: Configuración de AWS Secrets Manager para la gestión de secretos.
 
 ## Requisitos
 
