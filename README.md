@@ -47,7 +47,6 @@ Este repositorio contiene la infraestructura de AWS gestionada mediante Terrafor
 ## Módulos
 
 ### S3 Bucket
-
 Configura y gestiona buckets S3 con versionado, cifrado, y políticas de acceso.
 
 ### CloudFront
@@ -65,6 +64,12 @@ Despliega bases de datos Aurora junto con RDS Proxy para mejorar la seguridad y 
 ### ElastiCache
 Configura clusters de ElastiCache para cacheo en memoria.
 
+### EKS
+Configura un clúster de Amazon EKS para la orquestación de contenedores con integración a Fargate.
+
+### NLB
+Configura un Network Load Balancer para distribuir el tráfico hacia el backend.
+
 ### IAM
 Gestión de roles y políticas IAM necesarias para los diferentes servicios.
 
@@ -73,3 +78,6 @@ Configuración de la Virtual Private Cloud (VPC), incluyendo subnets, tablas de 
 
 ### Security Group
 Configura los grupos de seguridad para controlar el tráfico de red.
+
+### Secrets Manager
+Configura AWS Secrets Manager para gestionar y proteger secretos como contraseñas y claves API.
