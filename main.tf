@@ -59,7 +59,7 @@ module "elasticache" {
   engine              = "redis"
   node_type           = "cache.t3.micro"
   num_cache_nodes     = 1
-  parameter_group_name = "default.redis3.2"
+  parameter_group_name = "default.redis7"
   port                = 6379
   subnet_ids          = module.vpc.private_subnets
   security_group_id   = module.security_group.eks_sg
@@ -95,7 +95,7 @@ module "secretsmanager" {
 
 module "s3" {
   source        = "./modules/s3"
-  bucket_name   = "mi-bucket-s3"
+  bucket_name   = "mi-bucket-s3111418082024"
   acl           = "private"
   tags = {
     Name = "S3 Bucket"
@@ -117,7 +117,7 @@ module "api_gateway_lambda" {
 
   lambda_function_name       = "mi-lambda-function"
   lambda_handler             = "index.handler"
-  lambda_runtime             = "nodejs14.x"
+  lambda_runtime             = "nodejs18.x"
   lambda_role_arn            = module.iam.lambda_role_arn
   lambda_s3_filename         = "lambda.zip"
   lambda_s3_bucket           = "mi-bucket-s3"
@@ -136,6 +136,19 @@ module "api_gateway_lambda" {
     Name = "API Gateway y Lambda"
   }
 }
+
+module "cognito" {
+  source                 = "./modules/cognito"
+  user_pool_name         = "mi-user-pool"
+  user_pool_client_name  = "mi-app-client"
+  generate_secret        = false
+  user_pool_domain       = "mi-domain"
+  identity_pool_name     = "mi-identity-pool"
+  tags = {
+    Name = "Cognito Setup"
+  }
+}
+
 
 
 
