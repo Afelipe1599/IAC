@@ -83,3 +83,5 @@ Configura los grupos de seguridad para controlar el tráfico de red.
 Configura AWS Secrets Manager para gestionar y proteger secretos como contraseñas y claves API.
 
 Esta arquitectura corresponde al siguiente diagrama:
+
+![](https://github.com/Afelipe1599/IAC/blob/main/PruebaPragma.drawio.png)
